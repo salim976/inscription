@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>Inscription</title>
+</head>
+<body>
+<form method="post" action="traitement.php">
+   <p>Civilité</p>
+
+     <input type="radio" id="monsieur" name="civilite" checked>
+     <label for="monsieur">M</label>
+
+     <input type="radio" id="madame" name="civilite" >
+     <label for="madame">Mme</label>
+
+     <input type="radio" id="autre" name="civilite">
+     <label for="autre">Autre</label>
+    </br></br>
+    <label for="nom">Nom</label>
+    <input type="text" id="nom" name="nom">
+    </br></br>
+    <label for="prenom">prenom</label>
+    <input type="text" id="prenom" name="prenom">
+    </br></br>
+    <label for="dateNaiss">Date de naissance</label>
+    <input type="date" id="dateNaiss" name="dateNaiss">
+    </br></br>
+    <label for="villeNaiss">Ville de naissance</label>
+    <input type="text" id="villeNaiss" name="villeNaiss">
+    </br></br>
+
+    <button type="submit">Valider</button>
+</form>
+</body>
+</html>
