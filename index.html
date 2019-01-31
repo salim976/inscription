@@ -33,6 +33,9 @@
     <input type="text" id="villeNaiss" name="villeNaiss" required>
     </br></br>
 
+		<div class="success" style="background:green; display:none;"></div>
+    <div class="alerte" style="background:red; display:none;"></div>
+
     <button class="valider">VALIDER</button>
 </div>
 <script>
@@ -52,9 +55,24 @@
 										},
 	           error:   function(xhr,status,message){ console.log(message); return false;},
 	        success :   function(result){
-	                        console.log(result);
-
-
+													// console.log(result);
+	                 				console.log(Object.keys(result).length);
+	                				if(Object.keys(result).length == 0){
+	                     			// par defaut on vide les mssages d'erreur pour affiche le message en cas de succes
+	                    			$(".alerte").css('display','none').html('');
+	                    			$(".success").css('display','block').html('enregistrement validé !!');
+	                				}else{
+	                    			message = '';
+	                    			// boucle qui retourne le nombre de messages d'erreurs
+				                    for(index in result) {
+				                        message += result[index]+'<br/>';
+				                    }
+				                    console.log(message);
+				                    // on vide le succes pour afficher les messages d'alerte
+				                    $(".success").css('display','none').html('');
+				                    $('.alerte').css('display','block').html(message);
+				                }
+	                			return false;
 	                    }
 	        });
 	});
