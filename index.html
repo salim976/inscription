@@ -3,10 +3,11 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<script src='jquery.min.js' type='text/javascript'></script>
 	<title>Inscription</title>
 </head>
 <body>
-<form method="post" action="traitement.php">
+<div>
    <p>CIVILITE</p>
 
      <input type="radio" id="civilite" name="civilite" checked>
@@ -17,6 +18,7 @@
 
      <input type="radio" id="civilite" name="civilite">
      <label for="autre">AUTRE</label>
+
     </br></br>
     <label for="nom">NOM</label>
     <input type="text" id="nom" name="nom" required>
@@ -31,7 +33,31 @@
     <input type="text" id="villeNaiss" name="villeNaiss" required>
     </br></br>
 
-    <button type="submit">VALIDER</button>
-</form>
+    <button class="valider">VALIDER</button>
+</div>
+<script>
+	$('.valider').on("click",function(){
+		$.ajax({
+	            type:   "POST",
+	             url:   "traitement.php",
+	           async:   true,
+	        dataType:   "json",
+	           cache:   false,
+	            data: {
+											civilite: $('#civilite').val(),
+											nom: $('#nom').val(),
+											prenom: $('#prenom').val(),
+											dateN: $('#dateNaiss').val(),
+											villeN: $('#villeNaiss').val()
+										},
+	           error:   function(xhr,status,message){ console.log(message); return false;},
+	        success :   function(result){
+	                        console.log(result);
+
+
+	                    }
+	        });
+	});
+</script>
 </body>
 </html>
